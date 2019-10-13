@@ -56,7 +56,7 @@ import chisel3._
 
 object ProjectNameMain extends App {
   iotesters.Driver.execute(args, () => new ProjectName) {
-    c => new GCDUnitTester(c)
+    c => new ProjectNameUnitTester(c)
   }
 }
 
