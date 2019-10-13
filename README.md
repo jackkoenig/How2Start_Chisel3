@@ -7,7 +7,7 @@ How to start hardware description language for biginners.
 # Prerequisists
 Prerequisists are
 - Java (for running Scala)
-- SBT (Simple Built Tool to parse Chisel3 grammeron the Scala)
+- SBT (Simple Built Tool to parse Chisel3 grammer on the Scala)
 
 See for sbt installation;
 'Installation Preparation'
