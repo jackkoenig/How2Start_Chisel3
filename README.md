@@ -72,3 +72,12 @@ At root of directory where "build.sbt" file is on, run following command;
 sbt 'test:runMain ProjectNameMain'
 ```
 NOTE: replace "ProjectName" with your project's name.
+
+# Small Tips
+If you want to use utility function prepared already such as ```Log2()```, then add following import description in your code;
+```
+import chisel3.util._
+```
+Utilities are listed in;
+
+https://www.chisel-lang.org/api/latest/index.html#chisel3.util.package
