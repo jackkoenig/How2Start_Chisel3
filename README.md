@@ -34,7 +34,7 @@ You can download a project template from;
 https://github.com/freechipsproject/chisel-template
 
 # Set-up to Compile
-Your must decide following point at first;
+You must decide following point at first;
 1. Project Name (defined in "name"-field in "build.sbt" file),
 2. Top module similar to HDL needs (see bellow)
 3. "YOUR_TEST_CODES.scala"
