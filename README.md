@@ -31,7 +31,7 @@ You can download a project template from;
 https://github.com/freechipsproject/chisel-template
 
 # Set-up to Compile
-You must decide following point before start your project;
+You must decide following point before starting your project;
 1. Project Name (defined in "name"-field in "build.sbt" file),
 2. Top module similar to HDL needs (see bellow)
 3. "YOUR_TEST_CODES.scala"
@@ -45,6 +45,7 @@ object ProjectName extends App {
 }
 ```
 where "args" are arguments you defined in your top module (option).
+This description is needed to generate Verilog-HDL code.
 
 # YOUR_TEST_CODES.scala
 This file is needed to test your code. Set the test file name with ProjectNameMain.scala (replace "ProjectName" with your project's name.)
@@ -73,7 +74,16 @@ sbt 'test:runMain ProjectNameMain'
 ```
 NOTE: replace "ProjectName" with your project's name.
 
+# How to generate HDL
+To generate Verilog-HDL code, simply run this commands
+```
+sbt 'runMain ProjectNameMain'
+```
+NOTE: replace "ProjectName" with your project's name.
+
 # Small Tips
+- Use of Utilities
+
 If you want to use utility function prepared already such as ```Log2()```, then add following import description in your code;
 ```
 import chisel3.util._
@@ -81,3 +91,27 @@ import chisel3.util._
 Utilities are listed in;
 
 https://www.chisel-lang.org/api/latest/index.html#chisel3.util.package
+
+
+- Reduction Operation across Vec
+
+For bellow declaration
+```
+val hoge = Vec(Size, Bool())
+```
+
+1. Cast to a UInt and use orR:
+```
+hoge.asUInt.orR
+```
+
+2. Use Scala reduce method (defined on Vec)
+```
+hoge.reduce(_ || _)
+```
+
+# Error Messages
+- "[error] (run-main-0) java.lang.ClassNotFoundException: ProjectName"
+
+Meaning:  There is no ProjectName top module in your source file(s).
+Solution: Check top module name.
