@@ -110,6 +110,20 @@ hoge.asUInt.orR
 hoge.reduce(_ || _)
 ```
 
+- Data structure with Initialization (Use of RegInit)
+
+You need define class for data set with **Wire** like this;
+```
+class datum (val DataWidth: Int) extends Bundle {
+  val valid = Wire(Bool(), false.B)
+  val data  = Wire(UInt(DataWidth.W), 0.U)
+}
+```
+Then you can use the class as follows
+```
+val Datum = RegInit(new dtatum(DataWidth))
+```
+
 # Error Messages
 - "[error] (run-main-0) java.lang.ClassNotFoundException: ProjectName"
 
