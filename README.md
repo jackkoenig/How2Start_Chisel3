@@ -5,14 +5,23 @@ How to start hardware description language of Chisel3 for biginners.
 - Biginners who have not experience about chisel and scala.
 
 # Prerequisists
-Prerequisists are
+Prerequisists are;
 - Java (for running Scala)
 - SBT (Simple Built Tool, to parse Chisel3 grammer on the Scala)
 
+# Instration
 See for sbt installation;
-'Installation Preparation'
-
+- SBT: 'Installation Preparation'
 https://github.com/freechipsproject/chisel3/wiki/Installation-Preparation
+
+- Chisel3.2
+https://github.com/freechipsproject/chisel3/releases/tag/v3.2.0
+
+To install chisel3.2 doing following commant in the directory;
+
+```
+sbt compile
+```
 
 # Project Directory Structure
 Required project directory structure is as follows;
@@ -34,7 +43,7 @@ https://github.com/freechipsproject/chisel-template
 You must decide following point before starting your project;
 1. Project Name (defined in "name"-field in "build.sbt" file),
 2. Top module similar to HDL needs (see bellow)
-3. "YOUR_TEST_CODES.scala"
+3. "YOUR_TEST_CODES.scala" (see bellow)
 
 # Top module
 Top module description bellow shoule be added to your a root-code file.
@@ -64,15 +73,23 @@ object ProjectNameRepl extends App {
 }
 ```
 where "ProjectName" in the code must be replaced with your project's name.
+
 We do **NOT** recommend to modify template file for beginners.
 
 
 # How to lint
 You need to change current directory at root of directory where "build.sbt" file is on. To lint your code, one way is to use test, run following command;
 ```
-sbt 'test:runMain ProjectNameMain'
+sbt 'runMain ProjectNameMain'
 ```
 NOTE: replace "ProjectName" with your project's name.
+
+
+# How to Test with test-code
+Simply run followinf command after making ```YOUR_TEST_CODES.scala```.
+```
+sbt 'test:runMain ProjectNameMain'
+```
 
 # How to generate HDL
 To generate Verilog-HDL code, simply run this commands
@@ -110,22 +127,26 @@ hoge.asUInt.orR
 hoge.reduce(_ || _)
 ```
 
-- Data structure with Initialization (Use of RegInit)
+- Data Structure with Initialization
 
-You need define class for data set with **Wire** like this;
+You need define class for data set with like this;
 ```
 class datum (val DataWidth: Int) extends Bundle {
-  val valid = Wire(Bool(), false.B)
-  val data  = Wire(UInt(DataWidth.W), 0.U)
+  val valid = Bool()
+  val data  = UInt(DataWidth.W)
 }
 ```
 Then you can use the class as follows
 ```
-val Datum = RegInit(new dtatum(DataWidth))
+val Datum = RegInit(0.U.asTypeOf(new dtatum(DataWidth)))
 ```
+Both of valid and data regs in RTL is cleared by hardware "reset" signal.
+The reset (and also clock) is added automatically.
+
 
 # Error Messages
 - "[error] (run-main-0) java.lang.ClassNotFoundException: ProjectName"
 
 Meaning:  There is no ProjectName top module in your source file(s).
+
 Solution: Check top module name.
