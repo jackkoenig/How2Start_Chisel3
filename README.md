@@ -12,12 +12,14 @@ Prerequisists are;
 # Instration
 See for sbt installation;
 - SBT: 'Installation Preparation'
+
 https://github.com/freechipsproject/chisel3/wiki/Installation-Preparation
 
 - Chisel3.2
+
 https://github.com/freechipsproject/chisel3/releases/tag/v3.2.0
 
-To install chisel3.2 doing following commant in the directory;
+To install chisel3.2 doing following command in the directory;
 
 ```
 sbt compile
