@@ -10,8 +10,7 @@ Prerequisists are;
 - SBT (Simple Built Tool, to parse Chisel3 grammer on the Scala)
 
 # Instration
-See for sbt installation;
-- SBT: 'Installation Preparation'
+- SBT (installation instructions)
 
 https://github.com/freechipsproject/chisel3/wiki/Installation-Preparation
 
@@ -19,7 +18,7 @@ https://github.com/freechipsproject/chisel3/wiki/Installation-Preparation
 
 https://github.com/freechipsproject/chisel3/releases/tag/v3.2.0
 
-To install chisel3.2 doing following command in the directory;
+To install chisel3.2, doing following command in the directory;
 
 ```
 sbt compile
@@ -52,10 +51,10 @@ Top module description bellow shoule be added to your a root-code file.
 Replace "ProjectName" with your project's name.
 ```
 object ProjectName extends App {
-  chisel3.Driver.execute(args,()=>new ProjectName(args))
+  chisel3.Driver.execute(args,()=>new ProjectName(_args_))
 }
 ```
-where "args" are arguments you defined in your top module (option).
+where "_args_" are arguments you defined in your top module (option).
 This description is needed to generate Verilog-HDL code.
 
 # YOUR_TEST_CODES.scala
@@ -92,6 +91,8 @@ Simply run followinf command after making ```YOUR_TEST_CODES.scala```.
 ```
 sbt 'test:runMain ProjectNameMain'
 ```
+NOTE: replace "ProjectName" with your project's name.
+
 
 # How to generate HDL
 To generate Verilog-HDL code, simply run this commands
@@ -99,6 +100,7 @@ To generate Verilog-HDL code, simply run this commands
 sbt 'runMain ProjectNameMain'
 ```
 NOTE: replace "ProjectName" with your project's name.
+
 
 # Small Tips
 - Use of Utilities
@@ -133,17 +135,17 @@ hoge.reduce(_ || _)
 
 You need define class for data set with like this;
 ```
-class datum (val DataWidth: Int) extends Bundle {
+class datum (DataWidth: Int) extends Bundle {
   val valid = Bool()
   val data  = UInt(DataWidth.W)
 }
 ```
-Then you can use the class as follows
+Then you can use the class as follows;
 ```
 val Datum = RegInit(0.U.asTypeOf(new dtatum(DataWidth)))
 ```
-Both of valid and data regs in RTL is cleared by hardware "reset" signal.
-The reset (and also clock) is added automatically.
+Both of valid and data "reg"s in RTL is cleared by hardware "reset" signal.
+The reset (and also clock) is added automatically to the RTL.
 
 
 # Error Messages
