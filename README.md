@@ -147,6 +147,17 @@ val Datum = RegInit(0.U.asTypeOf(new dtatum(DataWidth)))
 Both of valid and data "reg"s in RTL is cleared by hardware "reset" signal.
 The reset (and also clock) is added automatically to the RTL.
 
+3. Multi-Port with Vec()
+Port class defines I/O and bundles several I/Os, then we can define Num ports like this;
+```
+val io = IO(new Bundle {val port = Vec(Num, new Port(Width))})
+```
+
+4. Multi-Instance with List
+Adder is instance class defining adder logic circuit, then we can define Num Adder like this;
+```
+val ADD = List.fill(Num)(Module(new Adder(DataWidth)))
+```
 
 # Error Messages
 - "[error] (run-main-0) java.lang.ClassNotFoundException: ProjectName"
