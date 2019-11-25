@@ -167,3 +167,17 @@ val ADD = List.fill(Num)(Module(new Adder(Width)))
 Meaning:  There is no ProjectName top module in your source file(s).
 
 Solution: Check top module name.
+
+- "[error] (run-main-0) firrtl.passes.PassExceptions"
+```
+[info] [time] Done elaborating.
+[error] (run-main-0) firrtl.passes.PassExceptions: 
+[error] firrtl.passes.CheckInitialization$RefNotInitializedException:  @[YourProject LineNo:ClmNo] : [module TopModuleName]  Reference PortName is not fully initialized.
+[error]    : PortName <= VOID
+```
+If your code does not have unknown state on the port "PortName", the exception might caused by FIRRTL's procedure.
+You can temporally fix this issue by assign "DontCare" which is reserved variable indicating "Do not Care".
+You can use it before assigning value to the port, like as follows;
+```
+PortName := DontCare
+```
