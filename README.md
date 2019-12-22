@@ -51,7 +51,7 @@ Top module description bellow shoule be added to your a root-code file.
 Replace "ProjectName" with your project's name.
 ```
 object ProjectName extends App {
-  chisel3.Driver.execute(args,()=>new ProjectName(_args_))
+  chisel3.Driver.execute(args,()=>new ProjectName("_args_"))
 }
 ```
 where "_args_" are arguments you defined in your top module (option).
@@ -91,7 +91,10 @@ Simply run followinf command after making ```YOUR_TEST_CODES.scala```.
 ```
 sbt 'test:runMain ProjectNameMain'
 ```
-NOTE: replace "ProjectName" with your project's name.
+NOTE: replace "ProjectName" with your project's name. If you set package name, 
+```
+sbt 'test:runMain package_name.ProjectNameMain'
+```
 
 
 # How to generate HDL
@@ -99,7 +102,10 @@ To generate Verilog-HDL code, simply run this commands
 ```
 sbt 'runMain ProjectNameMain'
 ```
-NOTE: replace "ProjectName" with your project's name.
+NOTE: replace "ProjectName" with your project's name. If you set package name, 
+```
+sbt 'test:runMain package_name.ProjectNameMain'
+```
 
 
 # Small Tips
@@ -162,6 +168,15 @@ val ADD = List.fill(Num)(Module(new Adder(Width)))
 ```
 
 # Error Messages
+- "OutOfMemory"
+
+JVM needs more heap memory space.
+To Specify giving space;
+```
+sbt -mem 4096
+```
+This gives 4GiB space.
+
 - "[error] (run-main-0) java.lang.ClassNotFoundException: ProjectName"
 
 Meaning:  There is no ProjectName top module in your source file(s).
