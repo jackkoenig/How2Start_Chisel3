@@ -1,15 +1,15 @@
 # How2Start_Chisel3
-How to start hardware description language of Chisel3 for biginners.
+How to start hardware description language of Chisel3 for beginners.
 
 # Purpose of This Document
-- Biginners who have not experience about chisel and scala.
+- Beginners who have not experience about Chisel and Scala programming languages.
 
-# Prerequisists
-Prerequisists are;
+# Prerequisites
+Prerequisites are;
 - Java (for running Scala)
 - SBT (Simple Built Tool, to parse Chisel3 grammer on the Scala)
 
-# Instration
+# Installations
 - SBT (installation instructions)
 
 https://github.com/freechipsproject/chisel3/wiki/Installation-Preparation
@@ -17,6 +17,10 @@ https://github.com/freechipsproject/chisel3/wiki/Installation-Preparation
 - Chisel3.2
 
 https://github.com/freechipsproject/chisel3/releases/tag/v3.2.0
+
+- Tags for Recent Versions
+
+https://github.com/freechipsproject/chisel3/tags
 
 To install chisel3.2, doing following command in the directory;
 
@@ -39,6 +43,10 @@ root--+--build.sbt
 You can download a project template from;
 
 https://github.com/freechipsproject/chisel-template
+
+If you want to use "testers2" (recent scala-based test environment), this is here;
+
+https://github.com/ucb-bar/chisel-testers2
 
 # Set-up to Compile
 You must decide following point before starting your project;
@@ -148,7 +156,7 @@ class datum (DataWidth: Int) extends Bundle {
 ```
 Then you can use the class as follows;
 ```
-val Datum = RegInit(0.U.asTypeOf(new dtatum(DataWidth)))
+val Datum = RegInit(0.U.asTypeOf(new datum(DataWidth)))
 ```
 Both of valid and data "reg"s in RTL is cleared by hardware "reset" signal.
 The reset (and also clock) is added automatically to the RTL.
@@ -162,7 +170,7 @@ val io = IO(new Bundle {val port = Vec(Num, new Port(Width))})
 
 - Multi-Instance with List
 
-Adder is instance class defining adder logic circuit, then we can define Num Adder like this;
+When an adder is instance class defining adder logic circuit, then we can define "Num" adders like this;
 ```
 val ADD = List.fill(Num)(Module(new Adder(Width)))
 ```
@@ -190,8 +198,8 @@ Solution: Check top module name.
 [error] firrtl.passes.CheckInitialization$RefNotInitializedException:  @[YourProject LineNo:ClmNo] : [module TopModuleName]  Reference PortName is not fully initialized.
 [error]    : PortName <= VOID
 ```
-If your code does not have unknown state on the port "PortName", the exception might caused by FIRRTL's procedure.
-You can temporally fix this issue by assign "DontCare" which is reserved variable indicating "Do not Care".
+If your code does not have unknown state on the port "PortName" (or, wire), the exception might caused by FIRRTL's procedure.
+You can temporally fix this issue by assigning "DontCare" which is reserved variable indicating "Do not Care".
 You can use it before assigning value to the port, like as follows;
 ```
 PortName := DontCare
