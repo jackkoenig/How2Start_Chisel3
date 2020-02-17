@@ -103,6 +103,10 @@ NOTE: replace "ProjectName" with your project's name. If you set package name,
 ```
 sbt 'test:runMain package_name.ProjectNameMain'
 ```
+- You can display hexadecimal number instead of decimal number with following option;
+```
+--display-base 16
+```
 
 
 # How to generate HDL
