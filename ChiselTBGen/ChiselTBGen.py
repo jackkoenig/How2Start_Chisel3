@@ -46,9 +46,9 @@ def Expect ( f_out, tokens ):
 
 def For_loop ( f_out, tokens ):
     index       = tokens[1]
-    index_init  = int(tokens[2])
+    index_init  = tokens[2]
     bound_tkn   = tokens[3]
-    bound_val   = int(tokens[4])
+    bound_val   = tokens[4]
     operator    = ''
 
     if ( len( tokens ) > 4):
@@ -107,9 +107,9 @@ def Assn ( f_out, tokens ):
 
 def Var ( f_out, tokens ):
     Name    = tokens[1]
-    Width   = int(tokens[len(tokens) - 1]) - 1
-    if (Width > 0) & (len(tokens) > 3):
-        f_out.writelines('reg   ' + Name + '[' + str(Width) + ':0] ' + '\n')
+    Width   = tokens[len(tokens) - 1]
+    if (len(tokens) > 3):
+        f_out.writelines('reg   ' + Name + '[' + str(Width) + '-1 :0] ' + '\n')
     else:
         f_out.writelines('reg   ' + Name + '\n')
 
