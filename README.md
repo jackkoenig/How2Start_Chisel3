@@ -31,6 +31,7 @@ sbt compile
 ```
 
 - iotesters
+
 iotesters is old version of verification tool which run on Scala and can generate VCD file.
 
 https://github.com/freechipsproject/chisel-testers/tree/master/src/main/scala/chisel3/iotesters
@@ -41,6 +42,7 @@ sbt compile
 ```
 
 - tester2 (chisel-testers)
+
 tester2 is second version of verification tool, currently this is on a main stream.
 
 https://github.com/freechipsproject/chisel-testers
@@ -64,6 +66,7 @@ root--+--build.sbt
 ```
 
 - chisel project template
+
 You can download a project template from;
 
 https://github.com/freechipsproject/chisel-template
@@ -166,6 +169,7 @@ val hoge = Vec(Size, Bool())
 ```
 hoge.asUInt.orR
 ```
+```orR``` is OR-reduction.
 
 2. Use Scala reduce method (defined on Vec)
 ```
@@ -207,7 +211,8 @@ val ADD = List.fill(Num)(Module(new Adder(Width)))
 - "OutOfMemory"
 
 Meaning: JVM needs more heap memory space.
-To Specify giving space;
+
+Solution: To Specify giving space;
 ```
 sbt -mem 4096
 ```
@@ -227,11 +232,13 @@ Bellow is example;
 [error] firrtl.passes.CheckInitialization$RefNotInitializedException:  @[YourProject LineNo:ClmNo] : [module TopModuleName]  Reference PortName is not fully initialized.
 [error]    : PortName <= VOID
 ```
-If your code does not have unknown state on the port "PortName" (or, wire) in switch statement, the exception might caused by FIRRTL's procedure.
-You can temporally fix this issue by assigning "DontCare" which is reserved variable indicating "Do not Care".
+
+Meaning: If your code does not have unknown state on the port "PortName" (or, wire) in switch statement, the exception might caused by FIRRTL's procedure.
+
+Solution: You can temporally fix this issue by assigning "DontCare" which is reserved variable indicating "Do not Care".
 You can use it before assigning value to the port, like as follows;
 ```
-PortName := DontCare
+Port/Wire := DontCare
 ```
 
-NOTE: the ```DontCare``` works every where. If you use this assignment for other purpose then you will meet failed HDL generation.
+**NOTE**: the ```DontCare``` works every where. If you use this assignment for other purpose then you will meet failed HDL generation.
