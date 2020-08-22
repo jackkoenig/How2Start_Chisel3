@@ -223,9 +223,9 @@ Class ```datum``` has to primitives; ```valid``` (bool type) and ```data``` (uns
 
   **Meaning**: JVM needs more heap memory space.
 
-  **Solution**: To Specify giving space;
+  **Solution**: To Specify giving space, add this option at compilation;
 ```
-  sbt -mem 4096
+  -mem 4096
 ```
   This gives 4GiB space in terms of MiB.
 
