@@ -237,7 +237,7 @@ Class ```datum``` has to primitives; ```valid``` (bool type) and ```data``` (uns
 
 - [exception] "*CheckInitialization$RefNotInitializedException*"
 
-  **Meaning**: If your code does not have unknown state on the port "PortName" (or, wire) in switch statement, the exception might caused by FIRRTL's procedure.
+  **Meaning**: If your code does have unknown state on the port "PortName" (or, wire) in switch statement, the exception might caused by FIRRTL's procedure. So, register does not make this error.
 
   **Solution**: You can temporally fix this issue by assigning "*DontCare*" which is reserved variable indicating "**Do not Care**".
   
