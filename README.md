@@ -165,7 +165,7 @@ where "ProjectName" in the code must be replaced with your project's name. We do
   --display-base 16
 ```
 
-- Reduction Operation across Vec
+- **Reduction Operation across Vec**
 
   Let us see bellow declaration
 ```
@@ -200,6 +200,7 @@ Class ```datum``` has to primitives; ```valid``` (bool type) and ```data``` (uns
   Both of valid and data "reg with init var"s in RTL is *zero`` cleared (unsigned zero) by hardware "reset" signal. You can specify your own value.The reset (and also clock) is added automatically to the HDL.
 
 - **Multi-Primitive**
+  
   You might want to have multiple instances. ```Vec`` method help us to coding without redundant efforts.
   For example, port class which defines I/O and bundles several I/Os, then we can define Num ports like this;
 ```
