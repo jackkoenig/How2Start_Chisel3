@@ -239,9 +239,7 @@ Class ```datum``` has to primitives; ```valid``` (bool type) and ```data``` (uns
 
   **Meaning**: If your code does have unknown state on the port "PortName" (or, wire) in switch statement, the exception might caused by FIRRTL's procedure. So, register does not make this error.
 
-  **Solution**: You can temporally fix this issue by assigning "*DontCare*" which is reserved variable indicating "**Do not Care**".
-  
-  You can use it before assigning value to the port, like as follows;
+  **Solution**: You can temporally fix this issue by assigning "*DontCare*" which is reserved variable indicating "**Do not Care**". You can use it before assigning value to the port, like as follows;
 ```
   Port/Wire := DontCare
 ```
