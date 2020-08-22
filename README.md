@@ -158,7 +158,7 @@ where "ProjectName" in the code must be replaced with your project's name. We do
 
   https://www.chisel-lang.org/api/latest/index.html#chisel3.util.package
 
-- Displaying Hexadecimal Number on iotersters
+- **Displaying Hexadecimal Number on iotersters**
   
   You can display hexadecimal number instead of decimal number with following option (**only** for iotesters);
 ```
@@ -171,7 +171,7 @@ where "ProjectName" in the code must be replaced with your project's name. We do
 ```
   val hoge = Vec(Size, Bool())
 ```
-And we want to to OR-reduction. There are twoways;
+And we want to do OR-reduction. There are two ways;
 1. Cast to a UInt and use orR;
 ```
   hoge.asUInt.orR
