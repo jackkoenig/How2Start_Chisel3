@@ -42,6 +42,11 @@ By doing **copy and paste** the template's build.sbt into your project directory
 
 ### Installation for Developpers
 
+To install, doing following command in the directory;
+```
+  sbt compile
+```
+
 - Stable Version of Recent Chisel
   
   Stable Recent Version: 3.4.0
@@ -52,10 +57,6 @@ By doing **copy and paste** the template's build.sbt into your project directory
   You can see recent versio at here;
   https://github.com/freechipsproject/chisel3/tags
 
-To install chisel3.4, doing following command in the directory;
-```
-  sbt compile
-```
 
 - iotesters
 
@@ -63,21 +64,12 @@ To install chisel3.4, doing following command in the directory;
 
   https://github.com/freechipsproject/chisel-testers/tree/master/src/main/scala/chisel3/iotesters
 
-  To install this tool, doing following in the directory;
-```
-  sbt compile
-```
-
 - tester2 (chisel-testers)
 
   tester2 is second generation of verification tool, currently this is on a main stream.
 
   https://github.com/freechipsproject/chisel-testers
 
-  To install this tool, doing following in the directory;
-```
-  sbt compile
-```
 
 ## Project Directory Structure
 Preferred project directory structure is as follows;
@@ -116,7 +108,7 @@ object ProjectNameMain extends App {
 ```
 where ```_args_``` are arguments you defined in your class as a succeeded parameter(s) (option). You can do naming this object's name ```ProjectNameMain```, freely. This description is needed to generate HDL.
 
-### How to Compile
+### How to Compile Your Code
 Compiling on a terminal is simply as follows;
 ```
 sbt 'runMain ProjectNameMain'
@@ -154,17 +146,6 @@ object ProjectNameRepl extends App {
 where "ProjectName" in the code must be replaced with your project's name. We do **not** recommend to modify this template file for beginners.
 
 
-## How to generate HDL
-To generate Verilog-HDL code, simply run this commands
-```
-  sbt 'runMain ProjectNameMain'
-```
-**NOTE**: replace "ProjectName" with your project's name. If you set a package name;
-```
-  sbt 'runMain package_name.ProjectNameMain'
-```
-
-
 ## Small Tips
 
 - **Use of Utilities**
@@ -182,8 +163,6 @@ To generate Verilog-HDL code, simply run this commands
 ```
   --display-base 16
 ```
-
-
 
 - Reduction Operation across Vec
 
