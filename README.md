@@ -159,6 +159,7 @@ where "ProjectName" in the code must be replaced with your project's name. We do
   https://www.chisel-lang.org/api/latest/index.html#chisel3.util.package
 
 - Displaying Hexadecimal Number on iotersters
+- 
   You can display hexadecimal number instead of decimal number with following option (**only** for iotesters);
 ```
   --display-base 16
